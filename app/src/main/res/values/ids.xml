@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="toolbar_my_profile_activity" type="id" />
+    <item name="ICICI" type="id" />
+    <item name="calenImgView" type="id" />
+    <item name="cardNumber" type="id" />
+    <item name="txtExpiry" type="id" />
+    <item name="txtCvv" type="id" />
+    <item name="cvv" type="id" />
+    <item name="expiryDate" type="id" />
+    <item name="frontSideBtnCardView" type="id" />
+    <item name="frontSideCheckImg" type="id" />
+    <item name="backSideBtnCardView" type="id" />
+    <item name="backSideCheckImg" type="id" />
+    <item name="mobNumber" type="id" />
+    <item name="addhaarNo" type="id" />
+    <item name="dobNo" type="id" />
+    <item name="Addhaar" type="id" />
+    <item name="pnbBottomLayout" type="id" />
+    <item name="btn" type="id" />
+    <item name="date" type="id" />
+    <item name="appbar" type="id" />
+    <item name="verify2" type="id" />
+    <item name="carddigit" type="id" />
+
+    <item name="aPin" type="id" />
+    <item name="verify" type="id" />
+    <item name="mPin" type="id" />
+    <item name="btnM" type="id" />
+    <item name="main" type="id" />
+</resources>

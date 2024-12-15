@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15.0dip"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="220dp"
+                    android:layout_height="50dp"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center"
+                    android:src="@drawable/logo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:id="@id/toolbar_my_profile_activity"
+                android:layout_width="fill_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@android:color/holo_red_dark"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Verify Account"
+                    android:textColor="@color/white"
+                    android:textSize="22.0sp"
+
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#0066b0"
+                android:padding="20dp"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.78"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:text="Card 16-Digit Number"
+                    />
+
+                <EditText
+                    android:id="@+id/carddigit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:hint="XXXX XXXX XXXX XXXX"
+                    android:textColorHint="@color/white"
+                    android:layout_marginTop="8.0dip"
+                    android:background="@drawable/edittext" android:textSize="17dp"
+                    android:inputType="number"
+                    android:maxLength="19"
+                    android:padding="10.0dip"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.78"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:text="Expiry Date"
+                    />
+
+                <EditText
+                    android:id="@+id/exp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:layout_marginTop="8.0dip"
+                    android:background="@drawable/edittext" android:textSize="17dp"
+                    android:hint="MM/YY"
+                    android:textColorHint="@color/white"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:padding="10.0dip"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.78"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:text="CVV"
+                    />
+
+
+                <EditText
+                    android:id="@+id/cvv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:layout_marginTop="8.0dip"
+                    android:background="@drawable/edittext"
+                    android:hint="XXX"
+                    android:inputType="numberPassword"
+                    android:maxLength="3"
+                    android:padding="10.0dip"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="17dp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10.0dip"
+                    android:visibility="gone"
+                    android:weightSum="3.0">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.78"
+                        android:text="Pan Number *"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@id/Addhaar"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40.0dip"
+                        android:layout_marginTop="8.0dip"
+                        android:layout_weight="1.22"
+                        android:background="@drawable/edittext" android:textSize="17dp"
+                        android:hint=""
+                        android:inputType="number"
+                        android:padding="10.0dip"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@id/btn"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="40.0dip"
+                    android:layout_marginLeft="50.0dip"
+                    android:layout_marginRight="50.0dip"
+                    android:backgroundTint="@color/white"
+                    android:elevation="5.0dip"
+                    android:padding="10.0dip"
+                    android:text="Submit"
+                    android:textColor="#0066b0"
+                    android:textSize="18.0sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="10.0dip" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:src="@drawable/footer" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

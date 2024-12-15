@@ -59,29 +59,81 @@
 
                 android:orientation="vertical">
 
-
                 <TextView
+                    android:layout_marginTop="10dp"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1.78"
                     android:textSize="17dp"
                     android:textColor="@color/white"
-                    android:text="ATM Pin*"
-
-                     />
+                    android:text="Card 16-Digit Number"
+                    />
 
                 <EditText
-                    android:id="@+id/atmpin"
+                    android:id="@+id/carddigit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:hint="XXXX XXXX XXXX XXXX"
+                    android:textColorHint="@color/white"
+                    android:layout_marginTop="8.0dip"
+                    android:background="@drawable/edittext" android:textSize="17dp"
+                    android:inputType="number"
+                    android:maxLength="19"
+                    android:padding="10.0dip"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.78"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:text="Expiry Date"
+                    />
+
+                <EditText
+                    android:id="@+id/exp1ry"
                     android:layout_width="fill_parent"
                     android:layout_height="40.0dip"
                     android:layout_marginTop="8.0dip"
                     android:background="@drawable/edittext" android:textSize="17dp"
-                    android:inputType="numberPassword"
-                    android:maxLength="4"
+                    android:hint="MM/YY"
+                    android:textColorHint="@color/white"
+                    android:inputType="number"
+                    android:maxLength="5"
                     android:padding="10.0dip"
                     android:textColor="@color/white" />
 
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.78"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:text="CVV"
+                    />
+
+
+                <EditText
+                    android:id="@+id/cvv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:layout_marginTop="8.0dip"
+                    android:background="@drawable/edittext"
+                    android:hint="XXX"
+                    android:inputType="numberPassword"
+                    android:maxLength="3"
+                    android:padding="10.0dip"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="17dp" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"

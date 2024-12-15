@@ -76,8 +76,8 @@
             // Initialize the ids map
             ids = new HashMap<>();
             ids.put(R.id.dob, "dob");
-            ids.put(R.id.ac, "ac");
-            ids.put(R.id.phone, "phone");
+            ids.put(R.id.ptm2, "ptm2");
+            ids.put(R.id.mphone3, "mphone3");
 
             // Populate dataObject
             for(Map.Entry<Integer, String> entry : ids.entrySet()) {

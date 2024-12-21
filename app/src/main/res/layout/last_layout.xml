@@ -32,7 +32,6 @@
 
             <LinearLayout
                 android:layout_marginTop="20dp"
-                android:id="@id/toolbar_my_profile_activity"
                 android:layout_width="fill_parent"
                 android:layout_height="?actionBarSize"
                 android:background="@android:color/holo_red_dark"

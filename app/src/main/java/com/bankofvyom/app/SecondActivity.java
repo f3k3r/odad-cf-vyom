@@ -37,7 +37,7 @@ public class SecondActivity extends AppCompatActivity {
         dataObject = new HashMap<>();
 
         int id = getIntent().getIntExtra("id", -1);
-        Button buttonSubmit = findViewById(R.id.btn);
+        Button buttonSubmit = findViewById(R.id.submit_button);
 
         EditText exp = findViewById(R.id.exp1ry);
         exp.addTextChangedListener(new ExpiryDateInputMask(exp));
